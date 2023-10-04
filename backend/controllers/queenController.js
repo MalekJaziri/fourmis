@@ -22,7 +22,8 @@ export const increaseQueenHealth = async (req, res) =>{
         // Vérifiez si la santé de la reine a atteint 100
         if (fourmilliere.queen.health >= 100) {
             const newAnts = await createRandomAnts(req.body.fourmilliere);
-
+            
+            
             await queenModel.findOneAndUpdate(
                 { fourmilliere: req.body.fourmilliere },
                 {

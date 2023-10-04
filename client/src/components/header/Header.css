@@ -1,0 +1,22 @@
+header {
+    background-color: #606c38;
+    margin:0;
+}
+
+h1{
+    font-family: "Rockybilly";
+    text-align:center;
+    margin: auto;
+    padding:20px;
+    transition: transform 0.3s;
+    text-shadow: 2px 2px 5px #fefae0;
+}
+
+h1:hover {
+    transform: scale(1.05);
+}
+
+header a{
+    text-decoration:none;
+    color: inherit;
+}

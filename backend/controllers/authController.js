@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import userModel from '../models/userModel.js';
 
 export const register = (req, res) => {
+   
+    
    userModel.create({
         pseudo: req.body.pseudo,
         surname: req.body.surname,
@@ -58,9 +60,13 @@ export const login = async (req, res) => {
                  res.status(200).json({
                      message: "login successful",
                      user: {
-                         id: user._id,
-                         email: user.email,
-                         isAdmin: user.isAdmin
+                        id: user.id,
+                        pseudo: user.pseudo,
+                        surname: user.surname,
+                        name: user.name,
+                        email: user.email,
+                        isAdmin: user.isAdmin
+                            
                      },
                      jwt
                  });
@@ -100,9 +106,13 @@ export const getUserByToken = async (req,res) =>{
         //  renvoie une réponse avec le statut HTTP 200 (OK) et un objet JSON contenant les informations de l'utilisateur extraites de la base de données.
         res.status(200).json({
             user: {
-                id : user._id,
-                email : user.email,
-                isAdmin : user.isAdmin
+                id: user.id,
+                        pseudo: user.pseudo,
+                        surname: user.surname,
+                        name: user.name,
+                        email: user.email,
+                        isAdmin: user.isAdmin
+                // renvoyer user pour pouvoir, avoir tout le contenu du user
             }
         })
         

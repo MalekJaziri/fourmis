@@ -4,13 +4,15 @@ import authRoute  from './routers/authRoute.js'
 import userRoute from './routers/userRoute.js'
 import adminRoute from './routers/adminRoute.js'
 import {auth} from './middleware/auth.js'
+import cors from "cors"
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(cors())
 
 import * as dotenv from 'dotenv'
 dotenv.config()

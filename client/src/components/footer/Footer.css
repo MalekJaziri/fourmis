@@ -1,0 +1,15 @@
+footer {
+    background: linear-gradient(#606c38, 20%, #283618);
+	color: #fefae0;
+	padding: 32px;
+	border-top: solid 3px #606c38;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: center;
+	font-weight: 500;
+}
+
+.footer-elem {
+	margin-bottom: 10px;
+}
