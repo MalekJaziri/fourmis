@@ -17,6 +17,10 @@ const queenModel = new mongoose.Schema ({
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Fourmilliere',
           
+        },
+    image: 
+        {
+            type:String
         }
 });
 

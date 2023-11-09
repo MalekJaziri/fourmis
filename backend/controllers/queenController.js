@@ -16,7 +16,7 @@ export const increaseQueenHealth = async (req, res) =>{
 
         let queen = await queenModel.findOneAndUpdate(
             { fourmilliere: req.body.fourmilliere }, 
-            { health: fourmilliere.queen.health += 50 }
+            { health: fourmilliere.queen.health += 100 }
         );
 
         // Vérifiez si la santé de la reine a atteint 100

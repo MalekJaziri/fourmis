@@ -18,6 +18,10 @@ const antModel = new mongoose.Schema ({
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Fourmilliere',
           required: true
+        },
+    image: 
+        {
+            type:String
         }
     
     

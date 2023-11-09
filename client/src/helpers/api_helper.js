@@ -45,13 +45,13 @@ import {GET_USER_BY_TOKEN} from './routes.js'
     return user
 }*/
 
-export async function get(url, config = {}) {
+export async function get(url, data, config = {}) {
     return new Promise((resolve, reject) => {
         fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${findToken()}`
             }
         })
             .then((response) => {
@@ -69,7 +69,7 @@ export async function get(url, config = {}) {
     })
 }
 
-export async function post(url, data, config = {}) {
+export async function post(url, data, ) {
 
     return new Promise((resolve, reject) => {
         fetch(url, {
@@ -77,7 +77,7 @@ export async function post(url, data, config = {}) {
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${findToken()}`
             }
         })
             .then((response) => {
@@ -103,7 +103,7 @@ export async function put(url, data, config = {}) {
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${findToken()}`
             }
         })
             .then((response) => {
@@ -120,4 +120,43 @@ export async function put(url, data, config = {}) {
             .catch(error => reject(error))
     })
 }
+
+export async function del(url, data, config = {}) {
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${findToken()}`
+            }
+        })
+            
+    })
+}
+
+
+export async function postImage(url, formData) {
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${findToken()}`
+            }
+        })
+            .then((response) => {
+                response.json()
+                    .then((data) => {
+                        if (response.ok) {
+                            resolve(data);
+                        } else {
+                            reject(data);
+                        }
+                    })
+                    .catch((err) => reject(err));
+            })
+            .catch((error) => reject(error));
+    });
+}
+
 

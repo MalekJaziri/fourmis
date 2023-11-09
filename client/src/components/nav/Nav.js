@@ -8,6 +8,10 @@ export function Nav () {
   
   
   
+  
+  
+  
+  
     return (
         <>
             <nav>
@@ -30,7 +34,25 @@ export function Nav () {
                       <li>
                         <Link to="/Profil">Profil</Link>
                       </li>
-                    ) : null}
+                      
+                      
+                     ) : null}
+                     
+                     {user.isLogged && user.fourmilliere.length === 0 ? (
+                        <li>
+                          <Link to="/GameStarter">GameStarter</Link>
+                        </li>
+                      ) : null}
+                      
+                      {user.isLogged && user.fourmilliere.length >0 ? (
+                        <li>
+                          <Link to="/InGame">InGame</Link>
+                        </li>
+                      ) : null}
+
+                  
+
+
                 </ul>
             </nav>
         </>

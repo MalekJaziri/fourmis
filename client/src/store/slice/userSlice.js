@@ -8,6 +8,8 @@ const initialState = {
   isAdmin: false,
   isLogged: false,
   error: null,
+  image: "",
+  fourmilliere: []
 };
 
 export const userSlice = createSlice({
@@ -17,24 +19,35 @@ export const userSlice = createSlice({
     addUser: (state, action) => {
       return {
         ...state,
-        id: action.payload.id,
+        _id: action.payload.id,
         pseudo: action.payload.pseudo,
         surname: action.payload.surname,
         name: action.payload.name,
         email: action.payload.email,
         isAdmin: action.payload.isAdmin,
+        image: action.payload.image,
+        fourmilliere: action.payload.fourmilliere,
         isLogged: true,
         error: null,
+        
+        
+      };
+    },
+    updateUser: (state, action) => {
+      return {
+        ...state,
+    ...action.payload,
+        
       };
     },
     deleteUser: (state) => {
       return {
-        ...initialState,
+        initialState,
       };
     },
   },
 });
 
-export const { addUser, deleteUser } = userSlice.actions;
+export const { addUser, deleteUser, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;

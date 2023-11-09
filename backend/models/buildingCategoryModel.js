@@ -1,19 +1,19 @@
 import mongoose from 'mongoose';
 
 
-const buildingCategoryModel = new mongoose.Schema ({
+const categoryBuildingModel = new mongoose.Schema ({
     name:{
         type: String,
         required: true
     },
     
-    image: [
+    image: 
         {
             type:String
         }
-        ]
+        
     
 });
 
 
-export default mongoose.model('buildingCategory', buildingCategoryModel);
+export default mongoose.model('buildingCategory', categoryBuildingModel);

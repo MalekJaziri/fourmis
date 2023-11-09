@@ -25,7 +25,7 @@ form {
   margin: 50px ;
   
   height: 500px;
-  background: white;
+  background: #fefae0;
   position: relative;
   display: grid;
   grid-template: 100% / 50% 50%;
@@ -34,7 +34,7 @@ form {
 
 .message {
   position: absolute;
-  background: white;
+  background: #fefae0;
   width: 50%;
   height: 100%;
   transition: 0.5s all ease;
@@ -105,6 +105,7 @@ form {
     font-weight: 300;
     color: #797a9e;
     letter-spacing: 0.11em;
+    background-color:#fefae0;
 
     &::placeholder {
       color: #333;

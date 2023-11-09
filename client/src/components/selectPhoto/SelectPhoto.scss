@@ -1,0 +1,23 @@
+.image-list{
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+    
+    .img-container{
+    height:150px;
+    width:150px;
+    overflow:hidden;
+    margin:10px;
+    cursor: pointer;
+    
+        &:hover img {
+      transform: scale(0.95); /* Augmentation de la taille de l'image au survol */
+    }
+    }
+    
+    img{
+    height:100%;
+    width:100%;
+    object-fit:cover;
+}
+}

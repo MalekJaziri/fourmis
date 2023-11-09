@@ -20,6 +20,8 @@ export const updateProfil = (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        image: req.body.image,
+        fourmilliere: req.body.fourmilliere
         
         
     }, {new:true} )
@@ -32,6 +34,8 @@ export const updateProfil = (req, res) => {
             surname: user.surname,
             email: user.email,
             password: user.password,
+            image: req.body.image,
+            fourmilliere: user.fourmilliere
         }) 
         
         

@@ -11,11 +11,11 @@ const levelModel = new mongoose.Schema ({
 
     },
     
-    requiredCategoryBuilding: [
+    requiredBuildingCategory: [
         {
             category: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'CategoryBuilding',
+                ref: 'buildingCategory',
                 required: true
             },
             quantity: {

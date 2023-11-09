@@ -1,9 +1,13 @@
 import express from 'express'
 import {getAllUsers, updateProfil, addimages} from '../controllers/adminController.js'
-import {createBuildingCategories} from '../controllers/buildingCategoryController.js'
+import {createBuildingCategories, getBuildingCategories , deleteBuildingCategory} from '../controllers/buildingCategoryController.js'
 
 import {deleteProfil} from '../controllers/userController.js'
-import {createLevel, getLevels} from '../controllers/levelController.js'
+import {createLevel, getLevels, deleteLevel} from '../controllers/levelController.js'
+
+import {getPhotoList} from '../controllers/photoController.js '
+
+import {createFourmilliere, getFourmilliereByOwner, getFourmilliereById, deleteFourmilliere} from '../controllers/fourmilliereControler.js'
 
 
 
@@ -30,12 +34,24 @@ router.post("/add-images", addimages)
 
 //gestion de la fourmillieres
 router.post("/create-building-categories", createBuildingCategories)
+router.get("/get-building-categories", getBuildingCategories)
+router.delete("/delete-building-categories/:id", deleteBuildingCategory)
 
 
 //gestion de niveux
 router.post("/create-level", createLevel)
 router.get("/get-levels", getLevels)
+router.delete("/delete-levels/:id", deleteLevel )
 
 
+
+router.get("/get-photo-list/:subfolder", getPhotoList)
+
+
+
+router.get("/get-fourmilliere-by-owner" , getFourmilliereByOwner )
+
+
+router.get("/get-fourmilliere/:id", getFourmilliereById);
 
 export default router

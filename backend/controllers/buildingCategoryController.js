@@ -1,8 +1,9 @@
-import categoryBuildingModel from '../models/buildingCategoryModel.js'
+import buildingCategoryModel from '../models/buildingCategoryModel.js'
 
 export const createBuildingCategories = (req, res) => {
-     categoryBuildingModel.create({
+     buildingCategoryModel.create({
         name: req.body.name,
+        image: req.body.image,
        
     })
    .then((buildingCategory) => {
@@ -12,6 +13,7 @@ export const createBuildingCategories = (req, res) => {
         buildingCategory: {
             
             name: buildingCategory.name,
+            image: buildingCategory.image,
             
             
         },
@@ -24,5 +26,27 @@ export const createBuildingCategories = (req, res) => {
        res.status(400).json({error: err.message})
    })
    
+   
+}
+
+export const getBuildingCategories = async (req, res) => {
+    const categorybuildings = await buildingCategoryModel.find()
+    
+    res.status(200).json(categorybuildings)
+   
+}
+
+
+
+export const deleteBuildingCategory = (req, res) => {
+    
+    const id = req.params.id;
+    
+    buildingCategoryModel.deleteOne({_id:id})
+        .then(() =>{
+         res.status(204).send()
+        })
+        .catch((err) => res.status(400).send(err.message))
+
    
 }

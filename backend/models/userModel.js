@@ -30,16 +30,23 @@ const userSchema = new mongoose.Schema ({
             match: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}/,
             required: [true, 'Oui oui, il faut quand même mettre un mot de passe']
         },
-        image: [
+        image: 
             {
                 type: String,
             }
-            ],
+            ,
         
         isAdmin: {
             type: Boolean
             
+        },
+        fourmilliere: [ 
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Fourmilliere',
+          
         }
+        ]
     }, {
         timestamps: true,
         versionKey: false

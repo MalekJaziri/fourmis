@@ -4,11 +4,16 @@ import antModel from '../models/antModel.js'
 import buildingModel from '../models/buildingModel.js'
 import requiredAntsModel from '../models/reqruiredAntsModel.js'
 import {createStartingWorkers} from '../utiles/antGenerator.js'
+import userModel from '../models/userModel.js'
+import mongoose from 'mongoose';
+
+
 
 export const createFourmilliere = async (req,res) => {
     try {
         let queen = await queenModel.create({
             name: req.body.queen,
+            image: req.body.image,
             
         })
         
@@ -37,6 +42,7 @@ export const createFourmilliere = async (req,res) => {
             
         );
         
+
         
         const fourmilliere = await fourmilliereModel.findById(data._id)
                 .populate('owner')
@@ -70,6 +76,28 @@ export const getFourmilliereById = async (req, res) => {
     // on renvoi les infos du user sous format json
     res.status(200).json(fourmilliere);
 };
+
+export const getFourmilliereByOwner = async (req, res) => {
+    try {
+        const ownerId = req.body.userId;
+        const ownerObjectId = new mongoose.Types.ObjectId(ownerId);
+        
+        const fourmilliere = await fourmilliereModel.findOne({ _id: ownerObjectId })
+            .populate('owner')
+            .populate('queen')
+            .populate('workers')
+            .populate('soldiers')
+            .populate('building');
+            console.log(fourmilliere)
+        
+        // Renvoyer les informations de la fourmilière au format JSON
+        res.status(200).json(fourmilliere);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Une erreur s\'est produite lors de la recherche de la fourmilière.' });
+    }
+};
+
 
 
 export const deleteFourmilliere = (req, res) => {

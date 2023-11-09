@@ -13,6 +13,8 @@ export const register = (req, res) => {
         email: req.body.email,
         password: req.body.password,
         isAdmin: false,
+        image: req.body.image,
+        fourmilliere: req.body.fourmilliere
     })
    .then((user) => {
        
@@ -26,7 +28,10 @@ export const register = (req, res) => {
             pseudo: user.pseudo,
             surname: user.surname,
             name: user.name,
-            email: user.email
+            email: user.email,
+            isAdmin: user.isAdmin,
+            image: user.image,
+            fourmilliere: user.fourmilliere
         },
         jwt
     })
@@ -65,7 +70,9 @@ export const login = async (req, res) => {
                         surname: user.surname,
                         name: user.name,
                         email: user.email,
-                        isAdmin: user.isAdmin
+                        isAdmin: user.isAdmin,
+                        image: user.image
+                        
                             
                      },
                      jwt
@@ -111,7 +118,9 @@ export const getUserByToken = async (req,res) =>{
                         surname: user.surname,
                         name: user.name,
                         email: user.email,
-                        isAdmin: user.isAdmin
+                        isAdmin: user.isAdmin,
+                        image: user.image,
+                        fourmilliere: user.fourmilliere
                 // renvoyer user pour pouvoir, avoir tout le contenu du user
             }
         })

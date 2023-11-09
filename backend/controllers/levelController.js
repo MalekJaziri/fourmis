@@ -45,9 +45,23 @@ export const createLevel = (req, res) => {
 
 
 export const getLevels = async (req, res) => {
-    
-    const levels = await levelModel.find()
-    
-    res.status(200).json(levels)
-} // voir tous les utilisateurs!
+    try {
+        const levels = await levelModel.find();
+        res.status(200).json(levels);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des niveaux :", error);
+        res.status(500).json({ message: "Une erreur s'est produite lors de la récupération des niveaux.", error: error.message });
+    }
+}
 
+
+export const deleteLevel = (req, res) => {
+    const id = req.params.id
+    
+    levelModel.deleteOne({_id:id})
+        .then(() =>{
+         res.status(204).send()
+        })
+        .catch((err) => res.status(400).send(err.message))
+
+}

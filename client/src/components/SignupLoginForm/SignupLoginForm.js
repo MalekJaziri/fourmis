@@ -1,65 +1,69 @@
-import { useState, useEffect } from 'react';
-import { REGISTER, LOGIN } from '../../helpers/routes.js';
-import { addUser } from '../../store/slice/userSlice.js';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addUser } from '../../store/slice/userSlice.js';
+import { useNavigate } from "react-router-dom";
 import './SignupLoginForm.scss';
-import {useNavigate} from "react-router-dom";
-
-
-
-
-
-
+import { ConfirmationPop } from '../../components/ConfirmationPop/ConfirmationPop.js';
+import { REGISTER, LOGIN } from '../../helpers/routes.js';
+import {postLogin} from '../../helpers/backend_helper.js'
 
 export function SignupLoginForm() {
-  
-  
   const [isSignUp, setIsSignUp] = useState(true);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  
-  
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     pseudo: '',
     surname: '',
     name: '',
     email: '',
     password: '',
-  });
-  
-  const handleChange = (event) => {
-        const { name, value } = event.target;
-  setFormData({
-    ...formData,
-    [name]: value,
-  });
-        
-    };
     
-    useEffect(() => {
-      console.log(user)
-    },[user]);
-      
-  
+
+  });
+
+  const [showGameConfirmation, setShowGameConfirmation] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   const handleSwitch = () => {
     setIsSignUp(!isSignUp);
-  };
+  }
 
+  const showConfirmationDialog = () => {
+    setShowGameConfirmation(true);
+  }
 
+  const confirmGameStart = () => {
+    // Effectuez les actions pour commencer une partie ici
+    setShowGameConfirmation(false);
+    
+    navigate("/GameStarter");
+  }
 
+  const cancelGameStart = () => {
+    // Annulez le démarrage du jeu et redirigez vers /profil
+    setShowGameConfirmation(false);
+    navigate("/profil");
+  }
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('You clicked submit.');
-    
-    
-    
 
     try {
       if (isSignUp) {
-        // Si c'est une inscription (register)
+        // Code pour l'inscription (register)
         const response = await fetch(REGISTER, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
@@ -71,30 +75,24 @@ export function SignupLoginForm() {
           localStorage.setItem("jwt", data.jwt);
           console.log("Inscription réussie:", data);
           dispatch(addUser(data.user));
-        navigate("/Profil")
+          // Vérification si l'utilisateur veut commencer une partie
+          showConfirmationDialog();
         } else {
           console.error("Erreur lors de l'inscription :", response.status, response.statusText);
         }
       } else {
-        // Code pour la connexion (login)
-        const response = await fetch(LOGIN, {
-          method: "POST",
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          localStorage.setItem("jwt", data.jwt);
-          console.log("Connexion réussie:", data);
-          dispatch(addUser(data.user));
-          
-          navigate("/Profil");
-          // Gérer la réponse de connexion réussie ici
-        } else {
-          console.error("Erreur lors de la connexion :", response.status, response.statusText);
-          // Gérer l'erreur de connexion ici
-        }
+        postLogin(formData)
+            .then(response => {
+              console.log(response)
+                dispatch(addUser(response.user))
+                localStorage.setItem("jwt", response.jwt)
+                console.log("ok")  
+                navigate("/profil")
+            })
+            .catch((err) => {
+                console.error(err.message)
+            })
+        
       }
     } catch (error) {
       console.error("Une erreur inattendue s'est produite :", error);
@@ -103,6 +101,15 @@ export function SignupLoginForm() {
 
   return (
     <div className="formContainer">
+    {showGameConfirmation && (
+          <ConfirmationPop
+            message="Voulez-vous commencer une partie ?"
+            confirmText="Commencer"
+            cancelText="Plus tard"
+            onConfirm={confirmGameStart}
+            onCancel={cancelGameStart}
+          />
+        )}
       <div className={`message ${isSignUp ? 'signup' : 'login'}`}>
         <div className="btn-wrapper">
           <button className={`button ${isSignUp ? 'active' : ''}`} onClick={() => setIsSignUp(true)}>
@@ -118,57 +125,57 @@ export function SignupLoginForm() {
           {isSignUp ? 'Welcome! Sign Up' : 'Welcome back!'}
         </div>
         <form onSubmit={handleSubmit}>
-            {isSignUp && (
-              <input
-                type="text"
-                placeholder="Pseudo"
-                name="pseudo"
-                value={formData.pseudo}
-                onChange={handleChange}
-                required
-              />
-            )}
-            {isSignUp && (
-              <input
-                type="text"
-                placeholder="Nom"
-                name="surname"
-                value={formData.surname}
-                onChange={handleChange}
-                required
-              />
-            )}
-            {isSignUp && (
-              <input
-                type="text"
-                placeholder="Prénom"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            )}
+          {isSignUp && (
             <input
-              type="email"
-              placeholder="Adresse e-mail"
-              name="email"
-              value={formData.email}
+              type="text"
+              placeholder="Pseudo"
+              name="pseudo"
+              value={formData.pseudo}
               onChange={handleChange}
               required
             />
+          )}
+          {isSignUp && (
             <input
-              type="password"
-              placeholder="Mot de passe"
-              name="password"
-              value={formData.password}
+              type="text"
+              placeholder="Nom"
+              name="surname"
+              value={formData.surname}
               onChange={handleChange}
               required
             />
-            <button className="button" type="submit">
-              {isSignUp ? 'Sign Up' : 'Login'}
-            </button>
-          </form>
-
+          )}
+          {isSignUp && (
+            <input
+              type="text"
+              placeholder="Prénom"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          )}
+          <input
+            type="email"
+            placeholder="Adresse e-mail"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button className="button" type="submit">
+            {isSignUp ? 'Sign Up' : 'Login'}
+          </button>
+        </form>
+        
       </div>
     </div>
   );

@@ -5,13 +5,13 @@ import fourmilliereModel from '../models/fourmilliereModel.js'
 
 export const createAntManellement = async (req, res) => {
     
-    const ants = await createAnt(req.body.category, req.body.fourmilliere)
+    const ants = await createAnt(req.body.category, req.body.fourmilliere, req.body.image)
     console.log(ants)
     res.status(201)
 }
 
 
-export const createAnt = async (category, fourmilliere //Id de la fourmilliere
+export const createAnt = async (category, fourmilliere,  //Id de la fourmilliere
 ) => {
     
       try {
@@ -19,6 +19,7 @@ export const createAnt = async (category, fourmilliere //Id de la fourmilliere
         const ant = await antModel.create({
             category: category,
             fourmilliere: fourmilliere, //id de la fourmilliere
+            //image: image,
             
         });
         
