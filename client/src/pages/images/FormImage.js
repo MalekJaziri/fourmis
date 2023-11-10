@@ -50,7 +50,7 @@ export function FormImages () {
     return (
         <>
             <Header/>
-            <Nav/>
+            
             
             <Main>
             

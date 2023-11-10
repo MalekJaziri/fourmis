@@ -121,7 +121,7 @@ export function FormCategoriesBatiments() {
     return (
         <>
             <Header />
-            <Nav />
+           
             <Main>
             {showDeleteConfirmation && (
                 <ConfirmationPop

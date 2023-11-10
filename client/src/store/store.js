@@ -7,6 +7,7 @@ import levelReducer from './slice/levelSlice.js'
 import fourmilliereReducer from './slice/fourmilliereSlice.js'
 import queenReducer from './slice/queenSlice.js'
 
+
 export default configureStore({
   reducer: {
     user: userReducer,
@@ -14,6 +15,7 @@ export default configureStore({
     levels: levelReducer,
     fourmilliere: fourmilliereReducer,
     queen: queenReducer,
+    
     
     
   }

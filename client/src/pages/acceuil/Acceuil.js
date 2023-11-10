@@ -19,7 +19,7 @@ export function Acceuil () {
   return (
     <>
       <Header />
-      <Nav />
+      
 
       <Main>
         <p>lorem</p>

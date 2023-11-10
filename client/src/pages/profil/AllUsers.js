@@ -28,7 +28,7 @@ export function AllUsers () {
       })
     
     
-    }, [Userlist]);
+    }, []);
   
   
     
@@ -42,7 +42,7 @@ export function AllUsers () {
     return (
          <>
             <Header/>
-            <Nav/>
+            
             
             <Main>
                 <div className="cardcontainer">

@@ -52,7 +52,7 @@ export function Profil() {
   return (
     <>
       <Header />
-      <Nav />
+      
       <Main>
         {user.isAdmin ? (
           <>

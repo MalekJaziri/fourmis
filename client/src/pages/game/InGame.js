@@ -200,6 +200,9 @@ console.log(fourmilliere.workers.length)
                 <div>
                    nombre de d'ouvrière {workers} 
                 </div>
+                <div>
+                   nombre de soldats {soldiers} 
+                </div>
                 {showNurseryAlert && (
                     <ConfirmationPop
                         message="Vous avez la possibilité de créer une Couveuse"

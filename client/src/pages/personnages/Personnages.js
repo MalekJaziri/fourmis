@@ -9,7 +9,7 @@ export function Personnage () {
     return (
         <>
             <Header/>
-            <Nav/>
+            
             
             <Main>
                 <p>

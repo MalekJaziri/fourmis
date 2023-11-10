@@ -1,0 +1,26 @@
+@import "./src/assets/styles/_breakpoint.scss",
+
+// Utilisez les variables définies ci-dessus
+@mixin respond-to-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    @content;
+  }
+}
+
+@mixin respond-to-md {
+  @media screen and (min-width: $screen-md-min) {
+    @content;
+  }
+}
+
+@mixin respond-to-lg {
+  @media screen and (min-width: $screen-lg-min) {
+    @content;
+  }
+}
+
+@mixin respond-to-xl {
+  @media screen and (min-width: $screen-xl-min) {
+    @content;
+  }
+}

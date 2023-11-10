@@ -19,6 +19,8 @@ export function ProfilCard({ user }) {
    const [photoList, setPhotoList] = useState([]);
    const [showSelectPhoto, setShowSelectPhoto] = useState(false);
    const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(user.image || null);
+   
+   const isAdmin = user && user.isAdmin === "isAdmin";
 
 
 useEffect(() => {

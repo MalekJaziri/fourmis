@@ -11,7 +11,7 @@ $grey: #c3c3d8;
    
     text-align:center;
     padding:10px;
-    width:40%;
+    width:70%;
     margin: auto ;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px 0 #283618 ;
@@ -71,4 +71,18 @@ $grey: #c3c3d8;
     padding:5px;
     margin-top:20px;
   }
+   @media screen and (min-width: 481px) {
+    width:55%;
+  
+    
+    
+  }
+   @media screen and (min-width: 768px) {
+    width:40%;
+  
+    
+    
+  }
+
 }
+

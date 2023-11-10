@@ -3,9 +3,10 @@
 
 $font: "Source Sans Pro", sans-serif;
 $blue: #bc6c25;
-$purple: #9893da;
+
 $grey: #c3c3d8;
 
+@import '../../styles/_colors.scss';
 
 
 
@@ -21,6 +22,8 @@ form {
 
 
 .formContainer {
+  
+  
   
   margin: 50px ;
   
@@ -105,7 +108,7 @@ form {
     font-weight: 300;
     color: #797a9e;
     letter-spacing: 0.11em;
-    background-color:#fefae0;
+    background-color:$light;
 
     &::placeholder {
       color: #333;
@@ -130,7 +133,7 @@ form {
   font-weight: 400;
   position: relative;
   z-index: 3;
-  background: #606c38;
+  background: $lightgreen;
   font-family: $font;
   cursor: pointer;
 }

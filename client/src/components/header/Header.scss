@@ -1,0 +1,89 @@
+header {
+    background-color: #606c38;
+    margin: 0;
+    height:200px;
+      
+     
+        
+       
+  
+        h1 {
+            font-family: "Rockybilly";
+            text-align: center;
+            margin: auto;
+            padding: 20px;
+            transition: transform 0.3s;
+            text-shadow: 2px 2px 5px #fefae0;
+            font-size:16px;
+    
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        @media screen and (min-width: 481px) {
+            h1{
+        font-size: 20px; // Ajustez la taille de la police pour les écrans de 481px et plus
+      }
+        }
+
+      @media screen and (min-width: 768px) {
+          height: 230px; /* Ajustez la taille du header à partir de 768px */
+    h1 {
+      font-size: 30px;
+    }
+    }
+}
+
+
+#dislexie{
+    position:absolute;
+    top:1em;
+    z-index:100;
+    right:10px;
+    
+  button {
+    
+  
+    overflow: hidden;
+    padding: 10px; /* Ajustez la taille du bouton selon vos besoins */
+
+    &:before {
+        
+      content: 'D';
+      display: inline-block;
+      width: 30px; /* Ajustez la largeur du pseudo-élément selon vos besoins */
+      height: 100%;
+      font-size:20px;
+      background-color: #606c38; /* Couleur de fond du "D" */
+      color: #283618; /* Couleur du texte du "D" */
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 0.3s;
+      /* Ajoutez une transition pour une animation fluide */
+    }
+
+    &:hover {
+      &:before {
+          content: 'Activer/Desactiver mode dislexie';
+        width: 200px; /* Affiche le texte complet au survol */
+      }
+    }
+  }
+
+
+}
+
+nav.open {
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+

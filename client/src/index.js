@@ -6,13 +6,13 @@ import store from './store/store.js';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import './styles/index.css';
-import './fonts/Rockybilly.ttf';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
+    
     <App />
   </Provider>,
 );

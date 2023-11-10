@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom';
 import './Nav.scss'
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 
 export function Nav () {
   const user = useSelector((state) => state.user);
+  
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   
   
   
@@ -14,7 +22,14 @@ export function Nav () {
   
     return (
         <>
-            <nav>
+        
+         
+            <nav className={isMenuOpen ? 'active' : ''}>
+                <div className="top-menu">
+                  <div id="burger" className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}></div>
+                </div>
+                      
+                
                 <ul>
                     <li>
                       <Link to="/">Acceuil</Link>

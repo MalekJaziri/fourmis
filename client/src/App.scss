@@ -1,0 +1,35 @@
+
+
+
+
+@font-face {
+  font-family: "Rockybilly";
+  src: local("Rockybilly"),
+    url("./fonts/Rockybilly.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dislexie";   /*Can be any text*/
+  src: local("OpenDyslexic"),
+    url("./fonts/OpenDyslexic.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+  
+}
+
+
+
+
+
+body {
+  margin: 0;
+}
+
+
+
+ .accessible-mode {
+  font-size: 25px; /* Taille de police augmentée pour le mode accessible */
+  font-family: 'Dislexie'; /* Police différente pour le mode accessible */
+}

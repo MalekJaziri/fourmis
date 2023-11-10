@@ -130,7 +130,7 @@ export function GameStarter () {
   return (
     <>
       <Header />
-      <Nav />
+      
 
       <Main>
         <p>GameStarter</p>

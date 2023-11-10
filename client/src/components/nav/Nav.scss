@@ -1,23 +1,97 @@
-$main-color: #dda15e;
-$hover-color: #bc6c25;
+@import '../../styles/_colors.scss';
+
+$main-color: $lightbrown;
+$hover-color: $brown;
+
+
+
+// Nav.scss
 
 nav {
-    background-color: $main-color;
-    display: flex;
-    box-shadow: 0px 5px 5px #606c38;
-    height: 50px;
+  width: 300px;
+  height: 50%;
+  font-weight: 700;
+  position: relative;
+  right:700px;
+  top: -100px;
+  background-color: $lightbrown;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease-in-out;
+  display:flex;
+  flex-direction: column;
 
-    ul {
+  &.active {
+    right:100px;
+    top:-100px;
+    
+  }
+
+  .top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 20%;
+    margin: 5% auto;
+    z-index:10;
+    position: fixed; /* Utilisez "fixed" pour positionner le bouton par rapport à la fenêtre du navigateur */
+    left: 10px; /* Ajustez la position en fonction de vos besoins */
+    top: 10px;
+
+    .burger {
+      width: 30px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        height: 4px;
+        background-color: #fff;
+        border-radius: 3px;
+        transition: transform 0.3s ease, top 0.3s ease;
+      }
+
+      &:before {
+        top: -8px;
+      }
+
+      &:after {
+        top: 8px;
+      }
+
+      &.active {
+        background-color: transparent;
+
+        &:before {
+          transform: rotate(45deg);
+          top: 0;
+        }
+
+        &:after {
+          transform: rotate(-45deg);
+          top: 0;
+        }
+      }
+    }
+  }
+
+ul {
         background-color: $main-color;
         display: flex;
         justify-content: space-around;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: flex-end;
         width: 100%;
         list-style: none;
         margin: 16px 0;
         box-sizing: border-box;
-        padding: 0;
-        align-items: center;
+        padding-right: 20px;
+        
 
         li {
             a {
@@ -35,4 +109,40 @@ nav {
             }
         }
     }
+    
+    @media screen and (min-width: 480px) {
+    
+  
+    
+    
+  }
+
+ @media screen and (min-width: 768px) {
+    width: 100%;
+    position: static; // Utilisez position: static pour revenir au flux normal du document
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:10;
+    height:50px;
+
+    .top-menu {
+      display: none; // Masquez le bouton hamburger sur les écrans plus larges
+    }
+
+    ul {
+      background-color: $main-color;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      width: 100%;
+      list-style: none;
+      margin: 16px 0;
+      box-sizing: border-box;
+      padding: 0;
+      align-items: center;
+      
+
+    }
+  }
 }

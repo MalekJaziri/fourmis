@@ -1,0 +1,27 @@
+.a11y-nav{
+    
+    position:absolute;
+    top:-10em;
+    z-index:100;
+    width:100%;
+    
+    a{
+        background-color:#fff;
+        font-weight:700;
+        position:absolute;
+        left:0;
+        right:0;
+        text-align:center;
+        
+        
+        &:focus {
+          top: 10em;
+          outline: 2px solid #007bff; /* Ajout d'une bordure pour indiquer le focus */
+        }
+    
+        &:hover {
+          background-color: #ccc; /* Ajout d'une couleur de fond au survol */
+        }
+    }
+    
+}

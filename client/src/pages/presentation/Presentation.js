@@ -9,7 +9,7 @@ export function Presentation () {
     return (
         <>
             <Header/>
-            <Nav/>
+            
             
             <Main>
                 <p>
