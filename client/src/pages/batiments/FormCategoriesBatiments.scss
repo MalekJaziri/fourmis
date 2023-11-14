@@ -1,0 +1,85 @@
+@import '../../styles/_colors.scss';
+
+.cat-bat{
+    position:relative;
+    
+    
+    .liste-bat{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        
+        ul{
+            
+            li{
+                display:flex;
+                list-style: none;
+                flex-direction:column;
+                align-items: center;
+                
+                
+                img{
+                    padding:10px;
+                }
+                
+            }
+        }
+        
+ 
+    }
+    
+       .button {
+  width: 100%;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+  position: relative;
+  z-index: 3;
+  background: $lightgreen;
+  margin:5px;
+  max-width:300px;
+  cursor: pointer;
+  
+  
+} 
+
+
+.name{
+    
+    margin:20px;
+    width: 90%;
+    
+    border: 1px solid #aaa;
+    font-size: 13px;
+    font-weight: 300;
+    color: #797a9e;
+    letter-spacing: 0.11em;
+    background-color:$light;
+    
+    label{
+        margin:10px 0;
+    }
+     @media screen and (min-width: 768px) {
+         width:300px;
+     }
+}
+
+
+    
+
+a{
+    text-decoration:none;
+    padding:5px;
+    border-radius:5px;
+    position:absolute;
+    bottom:0px;
+    right:0;
+    background-color:$brown;
+    color:$light;
+    
+}
+
+}

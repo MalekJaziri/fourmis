@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {Footer} from '../../components/footer/Footer.js'
 import {Header} from '../../components/header/Header.js'
 import {Main} from '../../components/main/Main.js'
-import {Nav} from '../../components/nav/Nav.js'
 import { Link } from "react-router-dom";
 import {ProfilCard} from '../../components/profilCard/ProfilCard.js'
 import { getAllUsers } from '../../helpers/backend_helper.js'
@@ -20,45 +19,26 @@ export function AllUsers () {
     .then(
         data => {
             setUserlist(data)
-            console.log(Userlist)
         }
-        )
+    )
     .catch(err => {
         console.log(err)
       })
-    
-    
     }, []);
   
-  
-    
-    
-    console.log(Userlist)
-    
-    
-    
-    
+
     
     return (
          <>
             <Header/>
-            
-            
             <Main>
                 <div className="cardcontainer">
-                    
-                    
                     {Userlist.map((user) => (
                         <ProfilCard key={user._id} user={user} />
                     ))}
-                    
-                
-                </div>
-                
-                
-                <Link className="button" to="/Profil">Retour à la page précédente</Link>
+                <Link  to="/Profil">Retour</Link>
+                </div>  
             </Main>
-            
             <Footer/>
         </>
         )

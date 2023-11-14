@@ -1,8 +1,23 @@
+@import '../../styles/_colors.scss';
+
 .cardcontainer{
     margin-top:10px;
     display:flex;
     justify-content:space-between;
     flex-direction: column;
+    position:relative;
+    
+    a{
+     text-decoration:none;
+     padding:5px;
+     border-radius:5px;
+     position:absolute;
+     bottom:0px;
+     right:0;
+     background-color:$brown;
+     color:$light;
+     
+ }
     
      @media screen and (min-width: 768px) {
     
@@ -12,4 +27,6 @@
     
     
   }
+  
+   
 }

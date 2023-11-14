@@ -87,13 +87,16 @@ const handleCancelSelectPhoto = () => {
       {user && (
         <div className="profile-card">
        {showSelectPhoto ? (
+       <>
             <SelectPhoto
               photoList={photoList}
               subfolder="photoProfil"
-              text="Texte personnalisé pour h2"
+              text="Sléctionnez une image"
               onImageSelect={handelImageSelect}
-              onCancel={handleCancelSelectPhoto}
+              
             />
+            <button className="cancel" onClick={handleCancelSelectPhoto}>Annuler</button>
+            </>
           ) : (
             <div className="select-photo" onClick={() => setShowSelectPhoto(true)}>
               {user.image && user.image.length > 0 ? (
@@ -102,11 +105,14 @@ const handleCancelSelectPhoto = () => {
                     src={user.image}
                     alt="Photo de profil"
                   />
-                  <div className="hover-text">Choisir une photo de profil</div>
+                  
+                  
                 </div>
+                
               ) : (
                 <LetteredAvatar name={user.name} surname={user.surname} />
               )}
+              <div className="hover-text">Choisir une photo de profil</div>
             </div>
           )}
           

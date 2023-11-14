@@ -11,6 +11,7 @@ import { ConfirmationPop } from "../../components/ConfirmationPop/ConfirmationPo
 import {SelectPhoto} from "../../components/selectPhoto/SelectPhoto.js"
 import {BASE_URL} from '../../helpers/routes.js'
 import {adminGetPhoto} from '../../helpers/backend_helper.js'
+import './FormCategoriesBatiments.scss'
 
 export function FormCategoriesBatiments() {
     const dispatch = useDispatch();
@@ -123,6 +124,7 @@ export function FormCategoriesBatiments() {
             <Header />
            
             <Main>
+            <div className="cat-bat">
             {showDeleteConfirmation && (
                 <ConfirmationPop
                     message={`Confirmez la suppression de la catégorie "${categoryToDelete.name}" ?`}
@@ -132,7 +134,7 @@ export function FormCategoriesBatiments() {
                     onCancel={handleCancelDeleteCategory}
                 />
             )}
-                <div>
+                <div className="liste-bat">
                     <h2>Liste des catégories de bâtiments :</h2>
                     <ul>
                         {categorylist.map((category) => (
@@ -143,18 +145,19 @@ export function FormCategoriesBatiments() {
                                 <img src={category.image} alt={category.name} style={{ width: '100px', height: '100px' }} />
                             )}   
                           </li>
-                          <button onClick={() => handleDeleteCategory(category)}>Supprimer la catégorie</button>
+                          <button className="button" onClick={() => handleDeleteCategory(category)}>Supprimer la catégorie</button>
                         </div>
                         ))}
                     </ul>
-                    <button onClick={handleAddCategory}>Ajouter nouvelle catégorie</button>
+                    <button className="button" onClick={handleAddCategory}>Ajouter nouvelle catégorie</button>
                 </div>
 
                 {addingCategory && (
                     <form onSubmit={handleSubmit}>
-                        <div>
+                        <div className="name">
                             <label>Nom de la catégorie de bâtiment :</label>
                             <input
+                                
                                 type="text"
                                 name="categoryName" // Utilisez le nom pour récupérer la valeur dans handleSubmit
                             />
@@ -169,12 +172,14 @@ export function FormCategoriesBatiments() {
                             />
                         )}
                         <div>
-                            <button type="submit">Créer la catégorie de bâtiment</button>
-                            <button type="button" onClick={handleCancel}>Annuler</button>
+                            <button className="button" type="submit">Créer la catégorie de bâtiment</button>
+                            <button className="button" type="button" onClick={handleCancel}>Annuler</button>
                         </div>
                     </form>
                 )}
-                <Link to="/Profil">Retour à la page précédente</Link>
+                <Link className="retour" to="/Profil">Retour</Link>
+                
+            </div>    
             </Main>
             <Footer />
         </>

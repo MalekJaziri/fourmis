@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+@import '../../styles/_colors.scss';
 
 $font: "Source Sans Pro", sans-serif;
 $blue: #bc6c25;
@@ -20,6 +21,20 @@ $grey: #c3c3d8;
     flex-direction: column;
     border: 1px solid #606c38;
     
+    .cancel{
+        width: 50%;
+        height: 30px;
+        border: 0;
+        outline: 0;
+        color: white;
+        font-size: 15px;
+        font-weight: 400;
+        margin:auto;
+        background: $lightgreen;
+        font-family: $font;
+        cursor: pointer;
+      }
+    
     .select-photo {
       position: relative;
     
@@ -30,16 +45,20 @@ $grey: #c3c3d8;
       .hover-text {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         background-color: rgba(0, 0, 0, 0.7);
+        border-radius:3px;
         color: #fff;
         padding: 10px;
+        font-size:10px;
         display: none;
       }
     
       &:hover .hover-text {
         display: block;
       }
+      
+      
     }
 
     
