@@ -11,7 +11,6 @@ import './AllUsers.scss'
 export function AllUsers () {
     
     const [Userlist, setUserlist] = useState([])
-    //const user = useSelector((state) => state.user);
     
     useEffect(() => {
     

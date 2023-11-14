@@ -37,13 +37,10 @@ function App() {
   
   
   useEffect(() => {
-    console.log(localStorage.getItem('jwt'))
-    console.log(!user.isLogged)
     if (localStorage.getItem('jwt') && !user.isLogged) {
       const userTokenPromise = getVerifyUserByToken();
       userTokenPromise
       .then(data => {
-        console.log(data)
         dispatch(addUser(data.user))
       })
       .catch(err => {
@@ -58,7 +55,6 @@ function App() {
   
   const toggleAccessibleMode = () => {
     setAccessibleMode(!accessibleMode);
-    console.log('Accessible mode toggled:', accessibleMode);
   };
   
   

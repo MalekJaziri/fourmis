@@ -34,7 +34,6 @@ export function SignupLoginForm() {
   }
 
   useEffect(() => {
-    console.log(user);
   }, [user]);
 
   const handleSwitch = () => {
@@ -73,9 +72,7 @@ export function SignupLoginForm() {
         if (response.ok) {
           const data = await response.json();
           localStorage.setItem("jwt", data.jwt);
-          console.log("Inscription réussie:", data);
           dispatch(addUser(data.user));
-          // Vérification si l'utilisateur veut commencer une partie
           showConfirmationDialog();
         } else {
           console.error("Erreur lors de l'inscription :", response.status, response.statusText);
@@ -83,10 +80,8 @@ export function SignupLoginForm() {
       } else {
         postLogin(formData)
             .then(response => {
-              console.log(response)
                 dispatch(addUser(response.user))
-                localStorage.setItem("jwt", response.jwt)
-                console.log("ok")  
+                localStorage.setItem("jwt", response.jwt) 
                 navigate("/profil")
             })
             .catch((err) => {

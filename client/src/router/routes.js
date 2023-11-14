@@ -5,7 +5,6 @@ import { Route, Routes } from 'react-router-dom';
 import {Accueil} from '../pages/acceuil/Accueil.js';
 import {Connexion} from '../pages/connexion/Connexion.js'
 import {Presentation} from '../pages/presentation/Presentation.js'
-import {Personnage} from '../pages/personnages/Personnages.js'
 import {Profil} from '../pages/profil/Profil.js'
 import {AllUsers} from '../pages/profil/AllUsers.js'
 import {FormImages} from '../pages/images/FormImage.js'
@@ -28,7 +27,6 @@ import {InGame} from '../pages/game/InGame.js'
 const publicRoutes = [
     { path: '/', element: <Accueil /> },
   { path: '/Presentation', element: <Presentation /> },
-  { path: '/Personnage', element: <Personnage /> },
   { path: '/Connexion', element: <Connexion /> },
 ]
 

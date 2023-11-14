@@ -36,8 +36,6 @@ export function Profil() {
   };
 
   useEffect(() => {
-    console.log(user);
-    console.log(user.image);
   }, [user]);
 
   const adminContent = (

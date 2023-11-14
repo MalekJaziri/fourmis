@@ -1,8 +1,6 @@
-// GameDashboard.js
-
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {getFourmilliere, increaseQueenHealth} from '../../helpers/backend_helper.js'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFourmilliere, increaseQueenHealth } from '../../helpers/backend_helper.js';
 import { addQueen, updateQueen, deleteQueen } from '../../store/slice/queenSlice.js';
 
 export function GameDashboard() {
@@ -10,35 +8,22 @@ export function GameDashboard() {
   const queen = useSelector((state) => state.queen);
   const fourmilliere = useSelector((state) => state.fourmilliere);
   const dispatch = useDispatch();
-  
-  
-  console.log(user)
-  console.log(queen)
-console.log(fourmilliere)
 
+  const fourmillereID = user.fourmilliere;
 
- const fourmillereID=  user.fourmilliere
-    
-     useEffect(() => {
-    
-      // Si l'ID de la fourmilière est disponible dans le state Redux, appelez getFourmilliere
-      getFourmilliere(fourmillereID)
-        .then(data => {
-          // Les données de la fourmilière ont été mises à jour dans le store Redux
-          console.log(data);
-          dispatch(updateQueen(data.queen))
-        })
-        .catch(err => {
-          console.log(err);
-          
-          
-        });
-    
+  useEffect(() => {
+    getFourmilliere(fourmillereID)
+      .then(data => {
+        dispatch(updateQueen(data.queen));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
   }, [fourmilliere]);
 
   useEffect(() => {
-    console.log(fourmilliere)
-  }, [fourmilliere]); // Listen to changes in fourmilliere
+  }, [fourmilliere]);
 
   return (
     <div>
@@ -62,7 +47,6 @@ console.log(fourmilliere)
       <div>
         Niveau du joueur: 
       </div>
-      {/* Add your game actions or buttons here */}
     </div>
   );
 }

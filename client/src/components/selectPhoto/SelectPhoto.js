@@ -6,9 +6,8 @@ export function SelectPhoto({ photoList, subfolder, text, onImageSelect, onCance
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageClick = (image) => {
-        console.log("click")
         setSelectedImage(image);
-        onImageSelect(image); // Appeler la fonction de rappel pour transmettre l'image sélectionnée
+        onImageSelect(image); 
     };
 
     return (
@@ -26,8 +25,6 @@ export function SelectPhoto({ photoList, subfolder, text, onImageSelect, onCance
                   </div>
                 ))}
             </div>
-            
-      
     </div>
         
     );
