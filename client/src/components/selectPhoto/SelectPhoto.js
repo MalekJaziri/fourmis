@@ -27,7 +27,7 @@ export function SelectPhoto({ photoList, subfolder, text, onImageSelect, onCance
                 ))}
             </div>
             
-      <button onClick={onCancel}>Annuler</button>
+      
     </div>
         
     );

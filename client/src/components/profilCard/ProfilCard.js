@@ -1,12 +1,12 @@
 import React from "react";
 import './ProfilCard.scss'
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import {LetteredAvatar} from "../lettredAvatar/LettredAvatar.js"
 import {userGetPhoto} from '../../helpers/backend_helper.js'
 import {SelectPhoto} from '../selectPhoto/SelectPhoto.js'
 import { useState, useEffect } from "react";
-import { updateUser, deleteUser } from "../../store/slice/userSlice.js";
-import { useSelector, useDispatch } from "react-redux";
+import { updateUser } from "../../store/slice/userSlice.js";
+import { useDispatch } from "react-redux";
 import {BASE_URL} from '../../helpers/routes.js'
 import { putUserUpdateProfil, } from '../../helpers/backend_helper.js'
 
@@ -20,7 +20,7 @@ export function ProfilCard({ user }) {
    const [showSelectPhoto, setShowSelectPhoto] = useState(false);
    const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(user.image || null);
    
-   const isAdmin = user && user.isAdmin === "isAdmin";
+ 
 
 
 useEffect(() => {
@@ -95,13 +95,14 @@ const handleCancelSelectPhoto = () => {
               onCancel={handleCancelSelectPhoto}
             />
           ) : (
-            <div onClick={() => setShowSelectPhoto(true)}>
+            <div className="select-photo" onClick={() => setShowSelectPhoto(true)}>
               {user.image && user.image.length > 0 ? (
                 <div className ="photo-profil">
                   <img
                     src={user.image}
                     alt="Photo de profil"
                   />
+                  <div className="hover-text">Choisir une photo de profil</div>
                 </div>
               ) : (
                 <LetteredAvatar name={user.name} surname={user.surname} />

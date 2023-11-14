@@ -23,6 +23,8 @@ import { ConfirmationPop } from '../../components/ConfirmationPop/ConfirmationPo
 
 import { useNavigate } from "react-router-dom";
 
+import './GameStarter.scss'
+
 
 
 
@@ -133,33 +135,34 @@ export function GameStarter () {
       
 
       <Main>
-        <p>GameStarter</p>
-        {isQueenSelectionVisible ? (
-          <CreateQueen onQueenCreation={handleQueenCreation}  />
-        ) : (
-          <>
-            <h2>Saisissez un nom pour votre fourmilière :</h2>
-            <input
-              type="text"
-              placeholder="Nom de la fourmilière"
-              value={fourmiliereName}
-              onChange={handleFourmiliereNameChange}
+        <div className="game-starter">
+            <h2>C'est ici que tout commence!</h2>
+            {isQueenSelectionVisible ? (
+              <CreateQueen onQueenCreation={handleQueenCreation}  />
+            ) : (
+              <form className="game-form">
+                <p>Choisissez un nom pour votre fourmilière :</p>
+                <input
+                  type="text"
+                  placeholder="Nom de la fourmilière"
+                  value={fourmiliereName}
+                  onChange={handleFourmiliereNameChange}
+                />
+                <button onClick={handleFourmiliereCreation}>
+                  Valider le nom de la fourmilière
+                </button>
+              </form>
+            )}
+            {showConfirmation && (
+            <ConfirmationPop
+              message={`Confirmez la création de la fourmilière "${fourmiliereName}" ?`}
+              confirmText="Confirmer"
+              cancelText="Annuler"
+              onConfirm={() => handleConfirmation(true)}
+              onCancel={() => handleConfirmation(false)}
             />
-            <button onClick={handleFourmiliereCreation}>
-              Valider le nom de la fourmilière
-            </button>
-          </>
-        )}
-        {showConfirmation && (
-        <ConfirmationPop
-          message={`Confirmez la création de la fourmilière "${fourmiliereName}" ?`}
-          confirmText="Confirmer"
-          cancelText="Annuler"
-          onConfirm={() => handleConfirmation(true)}
-          onCancel={() => handleConfirmation(false)}
-        />
-      )}
-       
+          )}
+        </div> 
       </Main>
 
       <Footer />

@@ -3,6 +3,8 @@ import {SelectPhoto} from '../selectPhoto/SelectPhoto.js';
 import {userGetPhoto, } from '../../helpers/backend_helper.js'
 import {BASE_URL} from '../../helpers/routes.js'
 
+import './CreateQueen.scss'
+
 
 export function CreateQueen({ onQueenCreation }) {
   const [queenName, setQueenName] = useState('');
@@ -39,7 +41,7 @@ export function CreateQueen({ onQueenCreation }) {
     }
     
     const handleCategoryImageSelect = (image) => {
-        const imageUrl = `${BASE_URL}/images/photoProfil/${image}`;
+        const imageUrl = `${BASE_URL}/images/fourmis/${image}`;
         console.log(imageUrl)
         setSelectedQueenPhoto(imageUrl);
     };
@@ -52,26 +54,29 @@ export function CreateQueen({ onQueenCreation }) {
     
 
   return (
-    <div>
-      <h2>Sélectionnez un nom et une photo pour la reine :</h2>
-      <input
-        type="text"
-        placeholder="Nom de la reine"
-        value={queenName}
-        onChange={(handleNameChange)}
-      />
-      <SelectPhoto
-          photoList={photoList}
-          subfolder="fourmis" // Spécifiez le sous-dossier
-          text="Choisissez un avatar pour Votre Reine" // Personnalisez le texte <h2> si nécessaire
-          onImageSelect={handleCategoryImageSelect}
+    <>
+      <div className="queen-creation">
+        <p>Sélectionnez un nom et une photo pour la reine :</p>
+        
+        <input
+          type="text"
+          placeholder="Nom de la reine"
+          value={queenName}
+          onChange={(handleNameChange)}
         />
-      <button
-        onClick={ handelQueenSetting}  
-      >
-        Créer la reine
-      </button>
-    </div>
+        <SelectPhoto
+            photoList={photoList}
+            subfolder="fourmis" // Spécifiez le sous-dossier
+            text="Choisissez un avatar pour Votre Reine" // Personnalisez le texte <h2> si nécessaire
+            onImageSelect={handleCategoryImageSelect}
+          />
+        <button
+          onClick={ handelQueenSetting}  
+        >
+          Créer la reine
+        </button>
+      </div>
+    </>
   );
 }
 

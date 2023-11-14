@@ -11,13 +11,19 @@ import {ConfirmationPop} from '../../components/ConfirmationPop/ConfirmationPop.
 import {  addFourmilliere, updateFourmilliere, deleteFourmilliere } from '../../store/slice/fourmilliereSlice.js'
 import { addBuildingCategory, deleteBuildingCategory } from '../../store/slice/buildingsCategoryrSlice.js';
 
+import {BuildingCard} from '../../components/buildingCard/BuildingCard.js'
+import {BASE_URL} from '../../helpers/routes.js'
+
+import './InGame.scss'
+
 export function InGame() {
-    const [fourmilliereapi, setFourmilliereapi] = useState([]);
+    
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const queen = useSelector((state) => state.queen);
-    const fourmilliere =  useSelector((state) => state.fourmilliere);
     
+    const fourmilliere =  useSelector((state) => state.fourmilliere);
+    const [fourmilliereapi, setFourmilliereapi] = useState([]);
     
     
     const [showNurseryAlert, setShowNurseryAlert] = useState(false);
@@ -157,7 +163,18 @@ console.log(fourmilliere.workers.length)
     }
     
 
-
+    
+    const getBuildingName = (category) => {
+    switch (category) {
+      case nursery:
+        return 'Couveuse';
+      case barrack:
+        return 'Caserne';
+      // Ajoutez d'autres cas pour chaque catégorie si nécessaire
+      default:
+        return 'Bâtiment inconnu';
+    }
+  };
 
     
      
@@ -166,43 +183,69 @@ console.log(fourmilliere.workers.length)
     return (
         <>
             <Header />
-            <Nav />
+            
 
             <Main>
-                <p>InGame</p>
-                <div>
-                    <h2>Nom de la reine: {queen.name} </h2>
-                    <img src={queen.image} alt={queen.name} />
-                    <div>
-                        État de santé de la reine:
-                        <input
-                            type="range"
-                            min="0"
-                            max="100"
-                            value={healthofqueen}
-                            className="health-bar"
-                            readOnly
-                        />
-                        <span>{healthofqueen}%</span>
+            <div className="in-game">
+                
+                <div className="dash-board">
+                    
+                    <div className="queen-dash">
+                        <h2> {queen.name} </h2>
+                        <div className="queen-photo">
+                            <img src={queen.image} alt={queen.name} />
+                        </div>
+                        <div className="queen-health">
+                            État de santé de la reine:
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={healthofqueen}
+                                className="health-bar"
+                                readOnly
+                            />
+                            <span>{healthofqueen}%</span>
+                        </div>
+                    </div>    
+                    <div className="anthill">
+                        <span>
+                            Population totale: {queen.laying}
+                        </span>
+                        <span>
+                            Niveau du joueur:
+                        </span>
+                         <span>
+                           nombre de d'ouvrière: {workers} 
+                        </span>
+                        <span>
+                           nombre de soldats: {soldiers} 
+                        </span>
                     </div>
-                    <div>
-                        Population: {queen.laying}
-                    </div>
-                    <div>
-                        Niveau du joueur:
-                    </div>
+                    
+                    
                     {/* Add your game actions or buttons here */}
                 </div>
-                <button onClick={handleclick}>
+                
+                
+                <button className="increase-queen-health" onClick={handleclick}>
                     chouchouter la reine
                 </button>
                 
-                <div>
-                   nombre de d'ouvrière {workers} 
+                <div className="game">
+                
+                    {fourmilliere.building.map((building, index) => (
+                      <BuildingCard
+                        key={index}
+                        name={getBuildingName(building.category)} 
+                        photo={`${BASE_URL}/images/photoBatiment/${getBuildingName(building.category)}.png`}
+                        
+                      />
+                    ))}
+                
                 </div>
-                <div>
-                   nombre de soldats {soldiers} 
-                </div>
+                
+                
                 {showNurseryAlert && (
                     <ConfirmationPop
                         message="Vous avez la possibilité de créer une Couveuse"
@@ -226,6 +269,10 @@ console.log(fourmilliere.workers.length)
                 
                 
                 
+                
+                
+             
+             </div>
             </Main>
             <Footer />
         </>

@@ -64,7 +64,7 @@ header {
       position: absolute;
       top: 0;
       left: 0;
-      transition: width 0.3s;
+      
       /* Ajoutez une transition pour une animation fluide */
     }
 
@@ -72,6 +72,7 @@ header {
       &:before {
           content: 'Activer/Desactiver mode dislexie';
         width: 200px; /* Affiche le texte complet au survol */
+        transform: translateX(-80%);
       }
     }
   }

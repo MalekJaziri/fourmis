@@ -29,17 +29,17 @@ export function Nav () {
                   <div id="burger" className={`burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}></div>
                 </div>
                       
+                      
+                      
                 
                 <ul>
                     <li>
-                      <Link to="/">Acceuil</Link>
+                      <Link to="/">Accueil</Link>
                     </li>
                     <li>
                       <Link to="/Presentation">Presentation</Link>
                     </li>
-                    <li>
-                      <Link to="/Personnage">Perso</Link>
-                    </li>
+                   
                     {!user.isLogged ? (
                     <li>
                       <Link to="/Connexion">Connexion</Link>

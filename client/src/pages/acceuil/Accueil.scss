@@ -1,0 +1,108 @@
+@import '../../styles/_colors.scss';
+
+ body {
+  margin: 0;
+  padding: 0;
+  background-image: url('http://malekjaziri.ide.3wa.io:3001/images/accueil/Accueil.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  height: 100vh; 
+  
+  
+  
+  
+  .accueil{
+      position: relative;
+      color:$light;
+      
+      .accueil_nav{
+          display:flex;
+          padding: 5px;
+          align-items: center;
+          justify-content: space-evenly;
+          
+          
+          
+          
+          
+           a {
+                text-decoration: none;
+                color: inherit;
+               
+                
+                border-radius:10px;
+                border:1px solid $light ;
+                padding:10px;
+                opacity:0.4;
+                
+                
+                 &:hover {
+                    
+                    
+                    
+                    transform: scale(1.05);
+                    opacity:1;
+                    background-color: rgba(255, 255, 255, 0.3);
+              }
+           
+           }
+           
+           .presentation {
+                  border-radius: 10px;
+                  border: 1px solid $light;
+                  padding: 10px;
+                  opacity: 0.4;
+                  
+                  
+                  
+            
+                  &:hover {
+                    transform: scale(1.05);
+                    opacity: 1;
+                    background-color: rgba(255, 255, 255, 0.3);
+                    cursor:pointer;
+            
+                    + .mid-screen-text {
+                        opacity: 1;
+                      }
+                  }
+                }
+              
+              
+           
+           
+           .mid-screen-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+                
+                
+
+               
+           
+      
+      
+      h2{
+          font-size:20px;
+          color:$light;
+          font-family:'Aoncc';
+          text-align:center;
+          position: relative;
+            top: 200%; // Place le haut du titre à 50% de la hauteur du conteneur parent
+            transform: translateY(1050%);
+            
+            opacity:0.4;
+      }
+  }
+}
+
+

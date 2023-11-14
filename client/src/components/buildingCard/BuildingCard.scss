@@ -1,0 +1,29 @@
+
+
+.building{
+    
+    border:2px solid  ;
+    border-radius:10px;
+    width:150px;
+    
+    margin:10px;
+    
+    .building-photo{
+        height:66%;
+        width:100%;
+        border-radius:top 10px;
+       
+        overflow:hidden;
+    
+        img{
+            height:100%;
+            width:100%;
+            object-fit:cover;
+        }
+    }
+    
+    span{
+        height:33%;
+        padding:10px;
+    }
+}

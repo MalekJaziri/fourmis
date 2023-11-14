@@ -1,0 +1,112 @@
+@import '../../styles/_colors.scss';
+
+.in-game{
+    
+    .dash-board{
+        display:flex;
+        margin:20px;
+        padding:20px;
+        border:2px solid $green  ;
+        border-radius:10px;
+        flex-direction:column;
+        justify-content: space-evenly;
+        
+        
+        
+        
+        .queen-dash{
+            display:flex;
+            flex-direction:column;
+        
+            .queen-photo{
+                height:150px;
+                width:150px;
+                border-radius:100px;
+                overflow:hidden;
+                margin:auto;
+                
+                img{
+                    height:100%;
+                    width:100%;
+                    object-fit:cover;
+                }
+            }
+        
+            .queen-health{
+                margin:10px;
+                
+                .health-bar{
+                    color:yellow;
+                }
+            }
+        }
+        
+        .anthill{
+            display:flex;
+            flex-wrap:wrap;
+            border: 1px solid;
+            border-radius:10px;
+            
+            span{
+                border: 1px solid; 
+                border-radius:10px;
+                margin:10px;
+                padding:10px;
+            }
+        }
+        
+       
+    }
+    
+    
+    
+    
+     @media screen and (min-width: 768px) {
+        .dash-board {
+            flex-direction:row;
+            
+            .anthill{
+                flex-direction:column;
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    .increase-queen-health{
+         width: 200px;
+      height: 30px;
+      border: 0;
+      outline: 0;
+      color: white;
+      font-size: 15px;
+      font-weight: 400;
+      position: relative;
+      
+      background: $lightgreen;
+      cursor: pointer;
+    }
+    
+    .game{
+        margin:20px;
+        padding:20px;
+        display:flex;
+        flex-direction:column;
+        justify-content: space-evenly;
+        align-items: center;
+        
+         @media screen and (min-width: 480px) {
+             flex-direction:row;
+             flex-wrap:wrap;
+        
+            
+        }
+        
+        
+        
+    }
+    
+    
+}

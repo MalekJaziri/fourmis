@@ -1,4 +1,4 @@
-import './Main.css'
+import './Main.scss'
 
 export function  Main ({children}) {
     

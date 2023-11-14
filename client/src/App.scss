@@ -9,6 +9,12 @@
 }
 
 @font-face {
+  font-family: "Aoncc";
+  src: local("Aoncc"),
+    url("./fonts/AONCC.TTF") format("truetype");
+}
+
+@font-face {
   font-family: "Dislexie";   /*Can be any text*/
   src: local("OpenDyslexic"),
     url("./fonts/OpenDyslexic.woff") format("woff");
